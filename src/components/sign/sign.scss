@@ -1,0 +1,346 @@
+.header {
+    font: bolder 24px/30px "CantarellBold";
+    color: #2E3436;
+    margin: 0;
+    padding-bottom: 15px;
+}
+.sign, .contact {
+    width: 50vw;
+    border-radius: 10px;
+    -webkit-box-shadow: 0px 0px 15px 0px rgba(187, 186, 186, 1);
+    -moz-box-shadow: 0px 0px 15px 0px rgba(187, 186, 186, 1);
+    box-shadow: 0px 0px 15px 0px rgba(187, 186, 186, 1);
+    .sign-blocks {
+        display: flex;
+        flex-direction: row;
+        background: #f8f7f7;
+        border-left: 1px solid #c1bab5;
+        border-right: 1px solid #c1bab5;
+        border-bottom: 1px solid #c1bab5;
+        border-radius: 0 0 10px 10px;
+        justify-content: center;
+    }
+    .sign-menu, .contact-menu {
+        .sign-inner-menu, .contact-inner-menu {
+            display: flex;
+            justify-content: center;
+        }
+        background: #e6e4e1;
+        border-radius: 10px 10px 0 0;
+        border: 1px solid #c1bab5;
+    }  
+}
+.tab-switcher {
+    font: 11pt "Cantarell";
+    color: #2E3436;
+    display: flex;
+    align-items: center;
+    .tab-label {
+        padding: 17px 24px;
+    }
+    .tab-label__select {
+        background: #D8D5CF;
+        border-left: 1px solid #c1bab5;
+        border-right: 1px solid #c1bab5;
+    }
+}
+.auth-block, .reg-block {
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    margin: 15px;
+
+    .auth-block__label, .reg-block__label {
+        font: 11pt/14pt Cantarell;
+        color: #2E3436;
+    }
+    .auth-block-form, .reg-block-form {
+        flex-grow: 1;
+        .reg-block-data, .auth-block-data {
+            padding: 15px 15px 0;
+            border-left: 1px solid #c1bab5;
+            border-top: 1px solid #c1bab5;
+            border-right: 1px solid #c1bab5;
+            border-radius: 10px 10px 0 0;
+            background: #ffffff;
+            div {
+                padding-bottom: 15px;
+            }
+        }
+        .reg-block-send, .auth-block-send {
+            padding: 15px;
+            background: #E8E8E8;
+            border: 1px solid #c1bab5;
+            border-radius: 0 0 10px 10px;
+        }
+    }
+    .auth-block__login, .auth-block__pass, .reg-block__login, .reg-block__pass {
+        height: 33px;
+        outline: 1px solid #CDC7C2;
+        border: 0;
+        border-radius: 6px;
+        width: 100%;
+        padding: 0;
+        box-sizing: border-box;
+        padding: 10px 8px;
+        margin: 10px 0 0;
+        font: 11pt/14pt Cantarell;
+        color: #2E3436;
+        &:focus {
+            outline: 2px solid #3584E4;
+        }
+    }
+}
+
+.App {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 10%;
+}
+body {
+    margin: 0;
+    height: 100vh;
+}
+.root {
+    height: 100vh;
+}
+.submit-btn {
+    padding: 7px 15px;
+    border-radius: 6px;
+    border: 1px solid #1B6ACB;
+    background: linear-gradient(#3483E4, #2379E2);
+    font: 11pt/14pt Cantarell;
+    color: #ffffff;
+}
+.error-msg {
+    font: 11pt/14pt Cantarell;
+    color: #ff0000;
+}
+.contact-blocks {
+    display: flex;
+    .contact-search {
+        margin: 10px;
+        position: relative;
+        &::before {
+            display: block;
+            content: "";
+            width: 16px;
+            height: 16px;
+            position: absolute;
+            z-index: 1;
+            top: 9px;
+            left: 6px;
+            background: url("../../images/edit-find.png");
+            opacity: 0.5;
+        }
+    }
+    .contact-list {
+        width: 270px;
+        height: 448px;
+        overflow: auto;
+        border-left: 1px solid #c1bab5;
+        border-right: 1px solid #c1bab5;
+        border-bottom: 1px solid #c1bab5;
+        border-radius: 0 0 0 10px;
+        .contact-list__item {
+            display: flex;
+            &.contact-list__item--active, &.contact-list__item--active:hover {
+                background: #3584E4;
+                & .contact-list__img {
+                    background: #ffffff;
+                }
+                & .contact-list__user {
+                    color: #ffffff;
+                }
+            }
+            &:hover {
+                background: #F6F5F4;
+                & .contact-list__img {
+                    background: #ffffff;
+                }
+            }
+        }
+    }
+    .contact-blocks__info {
+        .header {
+            margin: 30px 22px 0;
+        }
+        
+        border-right: 1px solid #c1bab5;
+        border-bottom: 1px solid #c1bab5;
+        border-radius: 0 0 10px;
+        flex: 1;
+        background: #F6F5F4;
+    }
+    .contact-block__unit {
+        font: 12pt/15pt "CantarellBold";
+        color: #2E3436;
+        margin: 0 22px 10px;
+    }
+    .contact-list__img {
+        margin: 8px;
+        height: 32px;
+        width: 32px;
+        border-radius: 16px;
+        background: #F6F5F4;
+    }
+    .contact-list__user {
+        padding: 15px 0 13px;
+        font: 12pt/15pt "Cantarell";
+        color: #2E3436;
+    }
+}
+.search {
+    height: 33px;
+    outline: 1px solid #CDC7C2;
+    border: 0;
+    border-radius: 6px;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px 8px 10px 27px;
+    font: 11pt/14pt Cantarell;
+    color: #2E3436;
+    position: relative;
+    &:focus {
+        outline: 2px solid #3584E4;
+    }
+    
+}
+.contact-fieldmap {
+    margin: 0 22px 32px;
+    border-radius: 10px;
+    background: #ffffff;
+    border: 1px solid #DCD7D4;
+    .params {
+        border-bottom: 1px solid #DCD7D4;
+        &:last-child {
+            border-bottom: none;
+        }
+    }
+    .params-label {
+        display: flex;
+    }
+    .params-name {
+        padding: 21px 20px;
+        width: 200px;
+        font: 11pt/14pt Cantarell;
+        color: #2E3436;
+    }
+    .contact-params {
+        &::before {
+            display: block;
+            content: "";
+            width: 16px;
+            height: 16px;
+            position: absolute;
+            z-index: 1;
+            top: 22px;
+            left: 6px;
+            opacity: 0.5;
+        }
+        display: flex;
+        align-items: center;
+        flex: 1;
+        margin-right: 15px;
+        position: relative;
+    }
+    .phone, .name, .email {
+        height: 33px;
+        outline: 1px solid #CDC7C2;
+        border: 0;
+        border-radius: 6px;
+        width: 100%;
+        box-sizing: border-box;
+        padding: 10px 8px 10px 27px;
+        font: 11pt/14pt Cantarell;
+        color: #2E3436;
+        position: relative;
+        &:focus {
+            outline: 2px solid #3584E4;
+        }
+    }
+    .phone-contact::before {
+        background: url("../../images/call-start.png");
+    }
+    .name-contact::before {
+        background: url("../../images/mail-send.png");
+    }
+    .email-contact::before {
+        background: url("../../images/mail-mark-important.png");
+    }
+}
+.contact-group {
+    padding: 7px 12px;
+    font: 11pt/14pt Cantarell;
+    color: #2E3436;
+    width: 100%;
+    border: 1px solid #CDC7C2;
+    border-radius: 6px;
+    background: linear-gradient(#F6F5F3, #EDEBE9);
+    &:hover {
+        background: #F8F8F7;
+    }
+    select {
+        background: #2379E2;
+    }
+}
+
+.add-contact {
+    height: 38px;
+    width: 38px;
+    margin: 8px;
+    background: url("../../images/list-add.png") center center no-repeat, linear-gradient(#F6F5F3, #EDEBE9);
+    border: 1px solid #CDC7C2;
+    border-radius: 6px;
+    &:hover {
+        background: url("../../images/list-add.png") center center no-repeat;
+        background-color: #F8F8F7;
+    }
+    &:active {
+        background: url("../../images/list-add.png") center center no-repeat;
+        background-color: #CFCAC4;
+    }
+}
+.remove-contact {
+    height: 38px;
+    width: 38px;
+    margin: 8px;
+    margin-left: 0;
+    background: url("../../images/list-remove.png") center center no-repeat, linear-gradient(#F6F5F3, #EDEBE9);
+    border: 1px solid #CDC7C2;
+    border-radius: 6px;
+    &:hover {
+        background: url("../../images/list-remove.png") center center no-repeat;
+        background-color: #F8F8F7;
+    }
+    &:active {
+        background: url("../../images/list-remove.png") center center no-repeat;
+        background-color: #CFCAC4;
+    }
+}
+.save-contact {
+    margin: 8px;
+    .save-contact__btn {
+        padding: 9px 15px;
+        border-radius: 6px;
+        border: 1px solid #1B6ACB;
+        background: linear-gradient(#3483E4, #2379E2);
+        font: 11pt/14pt Cantarell;
+        color: #ffffff;
+        &:disabled {
+            background: #FAF9F8;
+            color: #B6B8B8;
+            border: 1px solid #B6B8B8;
+        }
+    }
+}
+.contact-menu {
+    display: flex;
+    justify-content: space-between;
+}
+.manage-btn-contact {
+    display: flex;
+    width: 270px;
+    border-right: 1px solid #c1bab5;
+}
