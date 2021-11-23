@@ -1,0 +1,32 @@
+{
+  "users": [
+    {
+      "id": 0,
+      "login": "Yan",
+      "password": "1234567"
+    }
+  ],
+  "contacts": [
+    {
+      "name": "Gerald",
+      "phone": "89445488",
+      "email": "g@f.com",
+      "groupID": "1",
+      "id": 1
+    },
+    {
+      "name": "Yan",
+      "phone": "085457",
+      "email": "y.m@t.ru",
+      "groupID": "0",
+      "id": 2
+    },
+    {
+      "name": "Mom",
+      "phone": "2706331319",
+      "email": "larisa@mail.com",
+      "groupID": "0",
+      "id": 3
+    }
+  ]
+}
