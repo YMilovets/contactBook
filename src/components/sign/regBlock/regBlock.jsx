@@ -71,6 +71,7 @@ export default function RegBlock() {
                 <div className="reg-block-send">
                     <button className="submit-btn" type="submit">Зарегистрироваться</button>
                 </div>
+                
                 {signed && <Navigate to="/contact" />}
             </form>
         </div>

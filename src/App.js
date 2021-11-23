@@ -8,18 +8,24 @@ import {
   Route,
   Navigate
 } from "react-router-dom";
+import { createStore } from "redux";
+import { Provider } from "react-redux"
+import reducer from "./reducer/reducer";
+const store = createStore(reducer)
 
 function App() {
   return (
-    <div className="App">
-      <Router>
-        <Routes>
-          <Route path="/sign" exact element={ <Sign /> } />
-          <Route path="/contact" exact element={ <Contact /> } />
-          <Route path="/" element={<Navigate to="/contact" />} />
-        </Routes>
-      </Router>
-    </div>
+    <Provider store={store}>
+      <div className="App">
+        <Router>
+          <Routes>
+            <Route path="/sign" exact element={ <Sign /> } />
+            <Route path="/contact" exact element={ <Contact /> } />
+            <Route path="/" element={<Navigate to="/contact" />} />
+          </Routes>
+        </Router>
+      </div>
+    </Provider>
   );
 }
 

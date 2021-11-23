@@ -321,7 +321,7 @@ body {
 }
 .save-contact {
     margin: 8px;
-    .save-contact__btn {
+    .save-contact__btn, .save-contact__cancel {
         padding: 9px 15px;
         border-radius: 6px;
         border: 1px solid #1B6ACB;
@@ -333,6 +333,9 @@ body {
             color: #B6B8B8;
             border: 1px solid #B6B8B8;
         }
+    }
+    .save-contact__cancel {
+        margin-left: 10px;
     }
 }
 .contact-menu {
