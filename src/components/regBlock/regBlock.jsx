@@ -21,7 +21,7 @@ export default function RegBlock() {
             else if (password.current.value.trim() !== passControl.current.value.trim()) {
                 throw new Error("Введенный пароль не совпадает")
             } 
-
+            
             fetch("http://localhost:8080/users", {
                 method: "POST",
                 headers: {

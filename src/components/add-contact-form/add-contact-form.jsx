@@ -36,10 +36,9 @@ export default function Info({children}) {
     }
 
     return (
-        <div className="contact-blocks__info">
-            <h1 className="header">{children}</h1>
-
-            <form method='POST' className="create-contact-form" onSubmit={submitHandle}>
+        <>  
+            {children}
+            <form method='POST' className="edit-contact-form" onSubmit={submitHandle}>
                 <h2 className="contact-block__unit">Название группы</h2>
                 <fieldset className="contact-fieldmap">
                     <ul>
@@ -89,8 +88,7 @@ export default function Info({children}) {
                 </fieldset>
                 <input className="send-data" type="submit" style={{display:"none"}} />
             </form>
-
-        </div>
+        </>
     )
 }
 

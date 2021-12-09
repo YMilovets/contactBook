@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { useDispatch } from "react-redux";
 
-export default function Editor({ id }) {
+export default function Editor({ id, children }) {
     const dispatch = useDispatch();
     const name = useRef(), 
         phone = useRef(), 
@@ -31,22 +31,22 @@ export default function Editor({ id }) {
             })
     }
     useEffect(() => {
-        fetch(`http://localhost:8080/contacts/${id}`)
-            .then(result => result.json())
-            .then(contact => {
-                name.current.value = contact.name;
-                phone.current.value = contact.phone;
-                email.current.value = contact.email;
+        if (localStorage.getItem("session"))
+            fetch(`http://localhost:8080/contacts/${id}`)
+                .then(result => result.json())
+                .then(contact => {
+                    name.current.value = contact.name;
+                    phone.current.value = contact.phone;
+                    email.current.value = contact.email;
 
-                group.current.value = contact.groupID;
-            })
+                    group.current.value = contact.groupID;
+                })
     }, [id])
 
     return (
-        <div className="contact-blocks__info">
-            <h1 className="header">Редактирование контакта</h1>
-
-            <form method='PATCH' className="create-contact-form" onSubmit={submitHandle}>
+        <>
+            {children}
+            <form method='PATCH' className="add-contact-form" onSubmit={submitHandle}>
                 <h2 className="contact-block__unit">Название группы</h2>
                 <fieldset className="contact-fieldmap">
                     <ul>
@@ -96,8 +96,7 @@ export default function Editor({ id }) {
                 </fieldset>
                 <input className="send-data" type="submit" style={{display:"none"}} />
             </form>
-
-        </div>
+        </>
     )
 }
 

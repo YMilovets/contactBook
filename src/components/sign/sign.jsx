@@ -1,9 +1,6 @@
 import React, { useState } from 'react'
-import {
-    Navigate
-  } from "react-router-dom";
-import RegBlock from './regBlock/regBlock';
-import AuthBlock from './authBlock/authBlock';
+import RegBlock from '../regBlock/regBlock';
+import AuthBlock from '../authBlock/authBlock';
 
 
 export default function Sign() {
@@ -16,7 +13,7 @@ export default function Sign() {
     }
     return (
         <div className="sign">
-            {localStorage.getItem("session") && <Navigate to="/contact" />}
+            
             <div className="sign-menu">
                 <div className="sign-inner-menu">
                     <ul className="tab-switcher">

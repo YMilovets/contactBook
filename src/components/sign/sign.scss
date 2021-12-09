@@ -1,10 +1,9 @@
-.header {
-    font: bolder 24px/30px "CantarellBold";
-    color: #2E3436;
-    margin: 0;
-    padding-bottom: 15px;
+.sign-inner-menu {
+    background: #e6e4e1;
+    border-radius: 10px 10px 0 0;
+    border: 1px solid #c1bab5;
 }
-.sign, .contact {
+.sign {
     width: 50vw;
     border-radius: 10px;
     -webkit-box-shadow: 0px 0px 15px 0px rgba(187, 186, 186, 1);
@@ -20,14 +19,11 @@
         border-radius: 0 0 10px 10px;
         justify-content: center;
     }
-    .sign-menu, .contact-menu {
+    .sign-menu {
         .sign-inner-menu, .contact-inner-menu {
             display: flex;
             justify-content: center;
         }
-        background: #e6e4e1;
-        border-radius: 10px 10px 0 0;
-        border: 1px solid #c1bab5;
     }  
 }
 .tab-switcher {
@@ -42,53 +38,6 @@
         background: #D8D5CF;
         border-left: 1px solid #c1bab5;
         border-right: 1px solid #c1bab5;
-    }
-}
-.auth-block, .reg-block {
-    width: 500px;
-    display: flex;
-    flex-direction: column;
-    margin: 15px;
-
-    .auth-block__label, .reg-block__label {
-        font: 11pt/14pt Cantarell;
-        color: #2E3436;
-    }
-    .auth-block-form, .reg-block-form {
-        flex-grow: 1;
-        .reg-block-data, .auth-block-data {
-            padding: 15px 15px 0;
-            border-left: 1px solid #c1bab5;
-            border-top: 1px solid #c1bab5;
-            border-right: 1px solid #c1bab5;
-            border-radius: 10px 10px 0 0;
-            background: #ffffff;
-            div {
-                padding-bottom: 15px;
-            }
-        }
-        .reg-block-send, .auth-block-send {
-            padding: 15px;
-            background: #E8E8E8;
-            border: 1px solid #c1bab5;
-            border-radius: 0 0 10px 10px;
-        }
-    }
-    .auth-block__login, .auth-block__pass, .reg-block__login, .reg-block__pass {
-        height: 33px;
-        outline: 1px solid #CDC7C2;
-        border: 0;
-        border-radius: 6px;
-        width: 100%;
-        padding: 0;
-        box-sizing: border-box;
-        padding: 10px 8px;
-        margin: 10px 0 0;
-        font: 11pt/14pt Cantarell;
-        color: #2E3436;
-        &:focus {
-            outline: 2px solid #3584E4;
-        }
     }
 }
 
@@ -117,80 +66,7 @@ body {
     font: 11pt/14pt Cantarell;
     color: #ff0000;
 }
-.contact-blocks {
-    display: flex;
-    .contact-search {
-        margin: 10px;
-        position: relative;
-        &::before {
-            display: block;
-            content: "";
-            width: 16px;
-            height: 16px;
-            position: absolute;
-            z-index: 1;
-            top: 9px;
-            left: 6px;
-            background: url("../../images/edit-find.png");
-            opacity: 0.5;
-        }
-    }
-    .contact-list {
-        width: 270px;
-        height: 448px;
-        overflow: auto;
-        border-left: 1px solid #c1bab5;
-        border-right: 1px solid #c1bab5;
-        border-bottom: 1px solid #c1bab5;
-        border-radius: 0 0 0 10px;
-        .contact-list__item {
-            display: flex;
-            &.contact-list__item--active, &.contact-list__item--active:hover {
-                background: #3584E4;
-                & .contact-list__img {
-                    background: #ffffff;
-                }
-                & .contact-list__user {
-                    color: #ffffff;
-                }
-            }
-            &:hover {
-                background: #F6F5F4;
-                & .contact-list__img {
-                    background: #ffffff;
-                }
-            }
-        }
-    }
-    .contact-blocks__info {
-        .header {
-            margin: 30px 22px 0;
-        }
-        
-        border-right: 1px solid #c1bab5;
-        border-bottom: 1px solid #c1bab5;
-        border-radius: 0 0 10px;
-        flex: 1;
-        background: #F6F5F4;
-    }
-    .contact-block__unit {
-        font: 12pt/15pt "CantarellBold";
-        color: #2E3436;
-        margin: 0 22px 10px;
-    }
-    .contact-list__img {
-        margin: 8px;
-        height: 32px;
-        width: 32px;
-        border-radius: 16px;
-        background: #F6F5F4;
-    }
-    .contact-list__user {
-        padding: 15px 0 13px;
-        font: 12pt/15pt "Cantarell";
-        color: #2E3436;
-    }
-}
+
 .search {
     height: 33px;
     outline: 1px solid #CDC7C2;

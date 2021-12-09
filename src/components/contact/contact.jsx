@@ -1,10 +1,11 @@
 import React from 'react';
-import { Navigate  } from "react-router-dom";
-import ContactBlocks from './contact-blocks';
-import Info from './info/contact-blocks__info';
-import ContactMenu from './contact-menu';
+import ContactBlocks from '../contact-blocks/contact-blocks';
+import Info from '../add-contact-form/add-contact-form';
+import ContactMenu from '../contact-menu/contact-menu';
 import { useSelector } from "react-redux"
-import Editor from './editor/contact-blocks__editor';
+import Editor from '../edit-contact-form/edit-contact-form';
+import ContactForm from '../contact-form/contact-form';
+import Header from '../header/header';
 
 export default function Contact() {
     let state = useSelector(state => state);
@@ -13,15 +14,17 @@ export default function Contact() {
             <div className="contact">
                 <ContactMenu />
                 <ContactBlocks>
-                    {state.addMode || <Editor id={state.selectedID} />}
+                    <ContactForm>
+                        {state.addMode || <Editor id={state.selectedID}>
+                            <Header>Редактирование контакта</Header>
+                        </Editor>}
                     
-                    {state.addMode && <Info>
-                        {state.addMode && "Добавить новый контакт"}
-                    </Info>}
-
+                        {state.addMode && <Info>
+                            <Header>Добавить новый контакт</Header>
+                        </Info>}
+                    </ContactForm>
                 </ContactBlocks>
             </div>
-            {!localStorage.getItem("session") && <Navigate to="/sign" />}
         </>
     )
 }

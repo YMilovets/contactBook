@@ -1,9 +1,8 @@
 import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux';
 
 export default function ContactBlocks({children}) {
     let list = useSelector(state => state.listContact);
-
     const dispatch = useDispatch();
     const selectHandle = (e, id) => {
         document.querySelectorAll(".contact-list__item").forEach(elem => {
@@ -14,20 +13,18 @@ export default function ContactBlocks({children}) {
     }
     useEffect(() => {
         fetch("http://localhost:8080/contacts")
-            .then( result => result.json() )
+            .then(result => result.json())
             .then( result => {
                 dispatch({
                     type: "ADD_CONTACT_LIST", 
                     payload: result
                 })
-            });
+        });
     }, [dispatch])
 
     return (
-        <div className="contact-blocks">
-                    
+        <div className="contact-blocks">              
             <ul className="contact-list">
-
                 <li className="contact-search">
                     <input placeholder="Поиск" className="search" type="text" />
                 </li>
