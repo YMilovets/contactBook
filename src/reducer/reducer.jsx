@@ -3,7 +3,7 @@ let defaultState = {
     editMode: true,
     saveContact: false,
     listContact: [],
-    selectedID: 1
+    selectedID: null
 }
 
 export default function reducer(state = defaultState, action) {
@@ -31,7 +31,7 @@ export default function reducer(state = defaultState, action) {
             items = state.listContact.filter(elem => elem.id !== action.payload);
             if (items.length === 0)
                 return { ...state, listContact: items, addMode: true, editMode: false }
-            return { ...state, listContact: items, selectedID: 1 }
+            return { ...state, listContact: items, selectedID: state.listContact[0].id }
         default:
             return state;
     }

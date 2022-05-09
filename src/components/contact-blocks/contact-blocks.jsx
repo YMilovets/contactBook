@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 export default function ContactBlocks({children}) {
     let list = useSelector(state => state.listContact);
+    let selectedID = useSelector(state => state.selectedID);
     const dispatch = useDispatch();
     const selectHandle = (e, id) => {
         document.querySelectorAll(".contact-list__item").forEach(elem => {
@@ -12,7 +13,8 @@ export default function ContactBlocks({children}) {
         dispatch({type: "UPDATE_SELECT_CONTACT", payload: id})
     }
     useEffect(() => {
-        fetch("http://localhost:8080/contacts")
+        const sessionID = localStorage.getItem('session');
+        fetch(`http://localhost:8080/contacts?userID=${sessionID}`)
             .then(result => result.json())
             .then( result => {
                 dispatch({
@@ -21,7 +23,7 @@ export default function ContactBlocks({children}) {
                 })
         });
     }, [dispatch])
-
+    /* Изменено сравнение выбранного элемента с id всех контактов в списке  */
     return (
         <div className="contact-blocks">              
             <ul className="contact-list">
@@ -30,7 +32,7 @@ export default function ContactBlocks({children}) {
                 </li>
                 {list.map( (elem, id) => 
                     <li key={id} onClick={(e) => selectHandle(e, elem.id)} 
-                        className={`contact-list__item ${id === 0 ? "contact-list__item--active" : ""}`}>
+                        className={`contact-list__item ${elem.id === selectedID ? "contact-list__item--active" : ""}`}>
                         <div className="contact-list__img"></div>
                         <div className="contact-list__user">{elem.name}</div>
                     </li>

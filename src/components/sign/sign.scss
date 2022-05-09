@@ -178,6 +178,22 @@ body {
         background-color: #CFCAC4;
     }
 }
+.logout-contact {
+    height: 38px;
+    width: 38px;
+    margin: 8px 8px 8px auto;
+    background: url("../../images/logout-contact.png") center center no-repeat, linear-gradient(#F6F5F3, #EDEBE9);
+    border: 1px solid #CDC7C2;
+    border-radius: 6px;
+    &:hover {
+        background: url("../../images/logout-contact.png") center center no-repeat;
+        background-color: #F8F8F7;
+    }
+    &:active {
+        background: url("../../images/logout-contact.png") center center no-repeat;
+        background-color: #CFCAC4;
+    }
+}
 .remove-contact {
     height: 38px;
     width: 38px;

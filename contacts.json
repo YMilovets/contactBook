@@ -4,29 +4,58 @@
       "id": 0,
       "login": "Yan",
       "password": "1234567"
+    },
+    {
+      "login": "Daniel",
+      "password": "Daniel",
+      "id": 1
+    },
+    {
+      "login": "Nick",
+      "password": "nick",
+      "id": 2
     }
   ],
   "contacts": [
     {
-      "name": "Gerald",
-      "phone": "89445488",
-      "email": "g@f.com",
-      "groupID": "1",
-      "id": 1
-    },
-    {
-      "name": "Yan",
-      "phone": "085457",
-      "email": "y.m@t.ru",
-      "groupID": "0",
-      "id": 2
-    },
-    {
       "name": "Mom",
-      "phone": "2706331319",
+      "phone": "27063313190",
       "email": "larisa@mail.com",
       "groupID": "0",
+      "userID": 1,
       "id": 3
+    },
+    {
+      "name": "Jane",
+      "phone": "1112222",
+      "email": "",
+      "groupID": "0",
+      "userID": 1,
+      "id": 4
+    },
+    {
+      "name": "Victor",
+      "phone": "89451",
+      "email": "",
+      "groupID": "1",
+      "userID": 1,
+      "id": 5
+    },
+    {
+      "name": "Gerald",
+      "phone": "45077845",
+      "email": "",
+      "groupID": "1",
+      "userID": 1,
+      "id": 6
+    },
+    {
+      "name": "MrMiracle",
+      "phone": "55454",
+      "email": "",
+      "groupID": "1",
+      "userID": 2,
+      "id": 7
     }
   ]
 }

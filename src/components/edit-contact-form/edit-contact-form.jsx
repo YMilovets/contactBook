@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch } from "react-redux";
 
 export default function Editor({ id, children }) {
@@ -7,6 +7,7 @@ export default function Editor({ id, children }) {
         phone = useRef(), 
         email = useRef(),
         group = useRef();
+    const [isEmpty, setIsEmpty] = useState(false);
 
     const submitHandle = (e) => {
         e.preventDefault();
@@ -31,18 +32,27 @@ export default function Editor({ id, children }) {
             })
     }
     useEffect(() => {
-        if (localStorage.getItem("session"))
+        const sessionID = localStorage.getItem("session");
+        if (sessionID)
             fetch(`http://localhost:8080/contacts/${id}`)
                 .then(result => result.json())
                 .then(contact => {
-                    name.current.value = contact.name;
-                    phone.current.value = contact.phone;
-                    email.current.value = contact.email;
-
-                    group.current.value = contact.groupID;
-                })
+                    setIsEmpty(true);
+                    /* Проверяем, содержит ли выбранный контакт данные */
+                    if (Object.keys(contact).length > 0) {
+                        setIsEmpty(false);
+                        name.current.value = contact.name;
+                        phone.current.value = contact.phone;
+                        email.current.value = contact.email;
+                        group.current.value = contact.groupID;
+                    }
+                });
     }, [id])
-
+    /* Если не было найдены контакты у пользователя с активной сессией */
+    if (isEmpty) 
+        return (<div className="empty-contact-item">
+            Список контактов пуст. Добавьте нового пользователя, кликнув по кнопке +
+        </div>);
     return (
         <>
             {children}

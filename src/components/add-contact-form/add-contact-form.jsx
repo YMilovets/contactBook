@@ -22,7 +22,8 @@ export default function Info({children}) {
                 name: name.current.value,
                 phone: phone.current.value,
                 email: email.current.value,
-                groupID: group.current.value
+                groupID: group.current.value,
+                userID: +localStorage.getItem("session"),
             })
         })
             .then( result => result.json() )
@@ -30,8 +31,13 @@ export default function Info({children}) {
                 dispatch({
                     type: "SEND_CONTACT_LIST",
                     payload: result
+                });
+                /* Выбор добавленного в списке контактов и обновление выбранного элемента */
+                dispatch({
+                    type: "UPDATE_SELECT_CONTACT",
+                    payload: result.id
                 })
-            } )
+            });
         dispatch({type: "EDIT_CONTACT"})
     }
 
