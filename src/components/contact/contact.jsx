@@ -19,7 +19,7 @@ export default function Contact() {
                 .then( result => result.length > 0 && 
                     dispatch({type: "UPDATE_SELECT_CONTACT", payload: result[0].id })
                 );
-    }, [sessionID]);
+    }, [sessionID, dispatch]);
     return (
         <>
             <div className="contact">

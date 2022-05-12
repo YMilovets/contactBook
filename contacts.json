@@ -19,7 +19,7 @@
   "contacts": [
     {
       "name": "Mom",
-      "phone": "27063313190",
+      "phone": "2706331300",
       "email": "larisa@mail.com",
       "groupID": "0",
       "userID": 1,
@@ -27,7 +27,7 @@
     },
     {
       "name": "Jane",
-      "phone": "1112222",
+      "phone": "1112222000",
       "email": "",
       "groupID": "0",
       "userID": 1,
@@ -43,7 +43,7 @@
     },
     {
       "name": "Gerald",
-      "phone": "45077845",
+      "phone": "4507784500",
       "email": "",
       "groupID": "1",
       "userID": 1,
@@ -51,11 +51,35 @@
     },
     {
       "name": "MrMiracle",
-      "phone": "55454",
+      "phone": "(545)565-56-66",
+      "email": "",
+      "groupID": "0",
+      "userID": 2,
+      "id": 7
+    },
+    {
+      "name": "Bella",
+      "phone": "(011)112-53-46",
+      "email": "",
+      "groupID": "0",
+      "userID": 2,
+      "id": 8
+    },
+    {
+      "name": "Serenko",
+      "phone": "8245113455",
       "email": "",
       "groupID": "1",
       "userID": 2,
-      "id": 7
+      "id": 9
+    },
+    {
+      "name": "Test",
+      "phone": "555555555",
+      "email": "",
+      "groupID": "0",
+      "userID": 1,
+      "id": 10
     }
   ]
 }

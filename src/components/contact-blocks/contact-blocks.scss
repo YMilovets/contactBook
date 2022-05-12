@@ -16,9 +16,14 @@
             opacity: 0.5;
         }
     }
+    .contact-error-msg {
+        font: 11pt/14pt "Cantarell";
+        color: #ff0000;
+        padding: 0 22px 15px;
+    }
     .contact-list {
         width: 270px;
-        height: 448px;
+        height: inherit;
         overflow: auto;
         border-left: 1px solid #c1bab5;
         border-right: 1px solid #c1bab5;
