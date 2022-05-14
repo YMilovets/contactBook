@@ -14,12 +14,17 @@
       "login": "Nick",
       "password": "nick",
       "id": 2
+    },
+    {
+      "login": "Jack",
+      "password": "jack",
+      "id": 3
     }
   ],
   "contacts": [
     {
       "name": "Mom",
-      "phone": "2706331300",
+      "phone": "(270)633-13-00",
       "email": "larisa@mail.com",
       "groupID": "0",
       "userID": 1,
@@ -51,15 +56,15 @@
     },
     {
       "name": "MrMiracle",
-      "phone": "(545)565-56-66",
+      "phone": "(011)154-84-98",
       "email": "",
-      "groupID": "0",
+      "groupID": "1",
       "userID": 2,
       "id": 7
     },
     {
-      "name": "Bella",
-      "phone": "(011)112-53-46",
+      "name": "Bella0",
+      "phone": "(011)",
       "email": "",
       "groupID": "0",
       "userID": 2,
@@ -67,9 +72,9 @@
     },
     {
       "name": "Serenko",
-      "phone": "8245113455",
+      "phone": "(000)000-02-22",
       "email": "",
-      "groupID": "1",
+      "groupID": "0",
       "userID": 2,
       "id": 9
     },
@@ -80,6 +85,30 @@
       "groupID": "0",
       "userID": 1,
       "id": 10
+    },
+    {
+      "name": "Проверка",
+      "phone": "011",
+      "email": "",
+      "groupID": "0",
+      "userID": 2,
+      "id": 11
+    },
+    {
+      "name": "MrsMarple",
+      "phone": "(564)568-79-86",
+      "email": "",
+      "groupID": "0",
+      "userID": 2,
+      "id": 12
+    },
+    {
+      "name": "роллер",
+      "phone": "(012)345-67-89",
+      "email": "gh@f.u",
+      "groupID": "2",
+      "userID": 2,
+      "id": 14
     }
   ]
 }

@@ -5,8 +5,9 @@ export default function RegBlock() {
     const userName = useRef();
     const password = useRef();
     const passControl = useRef();
-    const [signed, setSigned] = useState(false);
-    const [message, setMessage] = useState();
+    const [signed, setSigned] = useState(false);    //состояние регистрации пользователя
+    const [message, setMessage] = useState();       //сообщения об ошибке
+    /* Отправка данных нового пользователя на регистрацию */
     const onSendHandle = (e) => {
         try {
             e.preventDefault();
@@ -14,14 +15,14 @@ export default function RegBlock() {
                 userName.current.focus();
                 throw new Error("Введите имя пользователя");
             }
-            else if (!password.current.value.trim()) {
+            if (!password.current.value.trim()) {
                 password.current.focus();
                 throw new Error("Введите пароль");
             }
-            else if (password.current.value.trim() !== passControl.current.value.trim()) {
+            if (password.current.value.trim() !== passControl.current.value.trim()) {
                 throw new Error("Введенный пароль не совпадает")
             } 
-            
+            /* Добавление нового пользователя в приложение */
             fetch("http://localhost:8080/users", {
                 method: "POST",
                 headers: {
@@ -31,9 +32,7 @@ export default function RegBlock() {
                     login: userName.current.value.trim(),
                     password: password.current.value.trim()
                 })
-            }).then(result => result.json()).then(
-                result => localStorage.setItem("session", result.id)
-            )
+            })
             setSigned(true);
             
         } catch (e) {
@@ -49,20 +48,29 @@ export default function RegBlock() {
                     <div>
                         <label className="reg-block__label">
                             Имя пользователя:<br />
-                            <input ref={userName} placeholder="Введите имя нового пользователя" className="reg-block__login" type="text" />
+                            <input ref={userName} 
+                                placeholder="Введите имя нового пользователя" 
+                                className="reg-block__login" 
+                                type="text" />
                         </label>
                     </div>
 
                     <div>
                         <label className="reg-block__label">
                             Пароль:<br />
-                            <input ref={password} placeholder="Введите пароль от учетной записи" className="reg-block__pass" type="password" />
+                            <input ref={password} 
+                                placeholder="Введите пароль от учетной записи" 
+                                className="reg-block__pass" 
+                                type="password" />
                         </label>
                     </div>
                     <div>
                         <label className="reg-block__label">
                             Повторите пароль:<br />
-                            <input ref={passControl} placeholder="Повторите ввод нового пароля" className="reg-block__pass" type="password" />
+                            <input ref={passControl} 
+                                placeholder="Повторите ввод нового пароля" 
+                                className="reg-block__pass" 
+                                type="password" />
                         </label>
                     </div>
                 </div>

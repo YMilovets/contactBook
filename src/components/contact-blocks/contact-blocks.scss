@@ -35,6 +35,8 @@
                 background: #3584E4;
                 & .contact-list__img {
                     background: #ffffff;
+                    font: 12pt/15pt "CantarellBold";
+                    color: #3081e3;
                 }
                 & .contact-list__user {
                     color: #ffffff;
@@ -44,6 +46,7 @@
                 background: #F6F5F4;
                 & .contact-list__img {
                     background: #ffffff;
+                    color: #3081e3;
                 }
             }
         }
@@ -73,6 +76,11 @@
         width: 32px;
         border-radius: 16px;
         background: #F6F5F4;
+        font: 12pt/15pt "Cantarell";
+        color: #2E3436;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
     .contact-list__user {
         padding: 15px 0 13px;

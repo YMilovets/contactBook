@@ -4,11 +4,13 @@ import { Navigate } from "react-router-dom"
 export default function AuthBlock() {
     const userName = useRef();
     const password = useRef();
-    const [signed, setSigned] = useState(false);
-    const [message, setMessage] = useState();
+    const [signed, setSigned] = useState(false);    //состояние авторизации пользователя
+    const [message, setMessage] = useState();       //сообщения об ошибке
+    /* Очистка сообщений при вводе данных в форме */
     const onChangeHandle = (e) => {
         setMessage("");
     }
+    /* Авторизация пользователя в приложении */
     const onSendHandle = (e) => {
         try {
             e.preventDefault();
@@ -16,24 +18,25 @@ export default function AuthBlock() {
                 userName.current.focus();
                 throw new Error("Введите имя пользователя");
             }
-            else if (!password.current.value.trim()) {
+            if (!password.current.value.trim()) {
                 password.current.focus();
                 throw new Error("Введите пароль");
             }
-
+            /* Получение информации о пользователе по введенному логину и паролю */
             fetch(`http://localhost:8080/users?login=${userName.current.value}&password=${password.current.value}`)
                 .then(result => result.json())
                 .then(
                     result => {
-                        if (!result.length)
+                        /* Пользователь не был найден */
+                        if (result.length === 0)
                             setMessage("Введите правильный логин и/или пароль");
+                        /* Метод возвращает найденного пользователя */
                         else {
                             localStorage.setItem("session", result[0].id);
                             setSigned(true);
                         }
                     }
                 )
-            
         } catch (e) {
             setMessage(e.message);
         }
@@ -47,14 +50,22 @@ export default function AuthBlock() {
                     <div>
                         <label className="auth-block__label">
                             Имя пользователя:<br />
-                            <input ref={userName} onChange={onChangeHandle} placeholder="Введите имя учетной записи" className="auth-block__login" type="text" />
+                            <input ref={userName} 
+                                onChange={onChangeHandle} 
+                                placeholder="Введите имя учетной записи" 
+                                className="auth-block__login" 
+                                type="text" />
                         </label>
                     </div>
 
                     <div>
                         <label className="auth-block__label">
                             Пароль:<br />
-                            <input ref={password} onChange={onChangeHandle} placeholder="Введите пароль от учетной записи" className="auth-block__pass" type="password" />
+                            <input ref={password} 
+                                onChange={onChangeHandle} 
+                                placeholder="Введите пароль от учетной записи" 
+                                className="auth-block__pass" 
+                                type="password" />
                         </label>
                     </div>
 

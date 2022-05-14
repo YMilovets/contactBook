@@ -6,12 +6,18 @@ export default function ContactBlocks({children}) {
     let selectedID = useSelector(state => state.selectedID);
     const dispatch = useDispatch();
     const selectHandle = (e, id) => {
+        /* Удаление выделения всех контактов в списке */
         document.querySelectorAll(".contact-list__item").forEach(elem => {
             elem.classList.remove("contact-list__item--active");
-        })
-        e.target.closest(".contact-list__item").classList.add("contact-list__item--active");
-        dispatch({type: "UPDATE_SELECT_CONTACT", payload: id})
+        });
+        /* Выделить выбранный контакт в списке */
+        e.target
+            .closest(".contact-list__item")
+            .classList.add("contact-list__item--active");
+        /* Обновление выбранного контакта в Redux */
+        dispatch({type: "UPDATE_SELECT_CONTACT", payload: id});
     }
+    /* Запись всех контактов выбранного пользователя в Redux */
     useEffect(() => {
         const sessionID = localStorage.getItem('session');
         fetch(`http://localhost:8080/contacts?userID=${sessionID}`)
@@ -33,7 +39,7 @@ export default function ContactBlocks({children}) {
                 {list.map( (elem, id) => 
                     <li key={id} onClick={(e) => selectHandle(e, elem.id)} 
                         className={`contact-list__item ${elem.id === selectedID ? "contact-list__item--active" : ""}`}>
-                        <div className="contact-list__img"></div>
+                        <div className="contact-list__img">{elem.name[0]}</div>
                         <div className="contact-list__user">{elem.name}</div>
                     </li>
                 )}

@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
+import React, { useState, forwardRef } from 'react'
 import { useSelector, useDispatch } from "react-redux"
 import { Navigate } from 'react-router';
 
-export default function ContactMenu() {
+function ContactMenu({actionBtnRef}) {
     const dispatch = useDispatch();
     const [isLogout, setIsLogout] = useState(false);
     const result = useSelector(state => state);
@@ -25,14 +25,6 @@ export default function ContactMenu() {
     }
     const cancelHandler = () => {
         dispatch({type: "EDIT_CONTACT"})
-    }
-    const saveHandler = (e) => {
-        e.preventDefault();
-        document.querySelector(".send-data").click()
-    }
-    const changeHandler = (e) => {
-        e.preventDefault();
-        document.querySelector(".send-data").click()
     }
     const logoutHandler = (e) => {
         e.preventDefault();
@@ -57,12 +49,14 @@ export default function ContactMenu() {
             <div className="save-contact">
                 {result.editMode 
                     && result.listContact.length > 0 
-                    && <button onClick={changeHandler} 
+                    && <button
+                        ref={actionBtnRef}
                         className="save-contact__btn" 
                         type="button">Изменить</button>}
-                {result.addMode && <button onClick={saveHandler} 
+                {result.addMode && <button
                     className="save-contact__btn" 
                     type="button" 
+                    ref={actionBtnRef} 
                     disabled={!result.addMode}>Сохранить</button>}
                 {result.addMode && <button onClick={cancelHandler} 
                         className="save-contact__cancel" 
@@ -73,3 +67,4 @@ export default function ContactMenu() {
         </div>
     )
 }
+export default forwardRef((props, ref) => <ContactMenu {...props} actionBtnRef={ref} />)

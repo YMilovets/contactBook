@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
 import RegBlock from '../regBlock/regBlock';
 import AuthBlock from '../authBlock/authBlock';
+import { classnames } from '../../utils/classnames';
 
 
 export default function Sign() {
+    /* Режим авторизации пользователя и регистрации, если false */
     const [signMode, setSignMode] = useState(true);
     const onChangeModeSign = () => {
         setSignMode(true);
@@ -17,8 +19,16 @@ export default function Sign() {
             <div className="sign-menu">
                 <div className="sign-inner-menu">
                     <ul className="tab-switcher">
-                        <li className={["tab-label", signMode && "tab-label__select"].filter(Boolean).join(" ")} onClick={onChangeModeSign}>Ввод</li>
-                        <li className={["tab-label", (signMode || "tab-label__select")].filter(Boolean).join(" ")} onClick={onChangeModeReg}>Регистрация</li>
+                        <li className={classnames(
+                                "tab-label", 
+                                signMode && "tab-label__select",
+                            )} 
+                            onClick={onChangeModeSign}>Ввод</li>
+                        <li className={classnames(
+                                "tab-label", 
+                                signMode || "tab-label__select",
+                            )} 
+                            onClick={onChangeModeReg}>Регистрация</li>
                     </ul>
                 </div>
             </div>

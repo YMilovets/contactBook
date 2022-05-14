@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import ContactBlocks from '../contact-blocks/contact-blocks';
 import Info from '../add-contact-form/add-contact-form';
 import ContactMenu from '../contact-menu/contact-menu';
@@ -10,6 +10,7 @@ import Header from '../header/header';
 export default function Contact() {
     let state = useSelector(state => state);
     const dispatch = useDispatch();
+    const actionBtnRef = useRef();
     const sessionID = localStorage.getItem("session");
     useEffect(() => {
         /* После авторизации определяем первый выбранный элемент в списке контактов */
@@ -22,15 +23,15 @@ export default function Contact() {
     }, [sessionID, dispatch]);
     return (
         <>
-            <div className="contact">
-                <ContactMenu />
+            <div className="contact"> 
+                <ContactMenu ref={actionBtnRef} />
                 <ContactBlocks>
                     <ContactForm>
-                        {state.addMode || <Editor id={state.selectedID}>
+                        {state.addMode || <Editor actionBtnRef={actionBtnRef} id={state.selectedID}>
                             <Header>Редактирование контакта</Header>
                         </Editor>}
                     
-                        {state.addMode && <Info>
+                        {state.addMode && <Info actionBtnRef={actionBtnRef}>
                             <Header>Добавить новый контакт</Header>
                         </Info>}
                     </ContactForm>
