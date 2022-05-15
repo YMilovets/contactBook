@@ -1,8 +1,13 @@
 .contact-blocks {
     display: flex;
+    height: 449px;
     .contact-search {
-        margin: 10px;
+        padding: 10px;
         position: relative;
+        position: sticky;
+        top: 0;
+        background: white;
+        z-index: 1;
         &::before {
             display: block;
             content: "";
@@ -10,8 +15,8 @@
             height: 16px;
             position: absolute;
             z-index: 1;
-            top: 9px;
-            left: 6px;
+            top: 19px;
+            left: 16px;
             background: url("../../images/edit-find.png");
             opacity: 0.5;
         }
@@ -22,6 +27,7 @@
         padding: 0 22px 15px;
     }
     .contact-list {
+        position: relative;
         width: 270px;
         height: inherit;
         overflow: auto;
@@ -56,7 +62,7 @@
             margin: 30px 22px 0;
         }
         .empty-contact-item {
-            margin: 30px 22px 0;
+            margin: 30px 22px;
             font: 11pt/14pt "Cantarell";
         }
         border-right: 1px solid #c1bab5;

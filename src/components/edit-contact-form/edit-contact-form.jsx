@@ -1,16 +1,16 @@
 import React, { useEffect, useRef, useState, useCallback } from 'react';
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { convertFormatPhone } from '../../utils/convertFormatPhone';
 import { convertPhoneToNum } from '../../utils/convertPhoneToNum';
 import { isEmailType } from '../../utils/isEmailType';
 
 export default function Editor({ id, children, actionBtnRef }) {
     const dispatch = useDispatch();
+    const { notFoundMsg, notItemsMsg, selectedID } = useSelector(state => state);
     const name = useRef(), 
         phone = useRef(), 
         email = useRef(),
         group = useRef();
-    const [isEmpty, setIsEmpty] = useState(false);  //определение пользователя без контактов
     const [message, setMessage] = useState();       //сообщения об ошибке
     const [phoneNum, setPhone] = useState("");      //отслеживание ввода текущего номера телефона
     /* Изменение выбранного контакта, обработчик обернут в useCallBack */
@@ -35,7 +35,7 @@ export default function Editor({ id, children, actionBtnRef }) {
                     throw new Error("Вы ввели некорректный адрес электронной почты");
             }
             /* Метод отправки изменений выбранного контакта */
-            fetch(`http://localhost:8080/contacts/${id}`, {
+            fetch(`http://localhost:8080/contacts/${selectedID}`, {
                 method: "PATCH",
                 headers: {
                     "Content-Type": "application/json"
@@ -58,7 +58,7 @@ export default function Editor({ id, children, actionBtnRef }) {
         } catch (e) {
             setMessage(e.message);
         }
-    }, [id, dispatch]); //отслеживается изменение выбранного id контакта
+    }, [selectedID, dispatch]); //отслеживается изменение выбранного id контакта
     /* Обработчик ввода номера телефона в текстовое поле и запись в state phoneNum */
     const changePhoneHandle = (e) => {
         e.preventDefault();
@@ -75,7 +75,8 @@ export default function Editor({ id, children, actionBtnRef }) {
     }
     /* Изменения представления номера телефона в поле в формате (000)000-00-00 */
     useEffect(() => {
-        phone.current.value = convertFormatPhone(phoneNum);
+        if (phone.current) //проверка на наличие поля ввода телефона
+            phone.current.value = convertFormatPhone(phoneNum);
     }, [phoneNum]);
     /* Заполняем поля редактирования данными выбранного контакта */
     useEffect(() => {
@@ -85,29 +86,37 @@ export default function Editor({ id, children, actionBtnRef }) {
             actionBtnRef.current.onclick = submitHandle;
         setMessage("");
         if (sessionID)
-            fetch(`http://localhost:8080/contacts/${id}`)
+            fetch(`http://localhost:8080/contacts/${selectedID}`)
                 .then(result => result.json())
                 .then(contact => {
-                    setIsEmpty(true);
                     /* Проверяем, содержит ли выбранный контакт данные */
                     if (Object.keys(contact).length > 0) {
                         /* в режиме редактирования пользователь должен иметь не менее один контакт */
-                        setIsEmpty(false);
+                        dispatch({
+                            type: "NOTITEMS_MESSAGE", payload: false
+                        });
+                        setPhone(""); // сначала очищаем телефон выбранного контакта
                         /* записываем номер телефона выбранного контакта */                        
                         setPhone(convertPhoneToNum(contact.phone));
-                        name.current.value = contact.name;
-                        phone.current.value = convertFormatPhone(contact.phone);
-                        email.current.value = contact.email;
-                        group.current.value = contact.groupID;
+                        if (name.current !== null) {
+                            name.current.value = contact.name;
+                            phone.current.value = contact.phone;
+                            email.current.value = contact.email;
+                            group.current.value = contact.groupID;
+                        }
                     }
                 });
-    }, [actionBtnRef, id, submitHandle])
-    /* Если не было найдены контакты у пользователя с активной сессией */
-    if (isEmpty) 
+    }, [actionBtnRef, selectedID, notFoundMsg, notItemsMsg, submitHandle, dispatch]);
+    /* Если у активного пользователя нет контактов */
+    if (notItemsMsg) 
         return (<div className="empty-contact-item">
             Список контактов пуст. Добавьте нового пользователя, кликнув по кнопке +
         </div>);
-
+    /* Если не было найдены контакты у пользователя с активной сессией */
+    if (notFoundMsg)
+        return (<div className="empty-contact-item">
+            Не найдены контакты по данному поисковому запросу!
+        </div>);     
     return (
         <>
             {children}

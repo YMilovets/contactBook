@@ -3,7 +3,9 @@ let defaultState = {
     editMode: true,
     saveContact: false,
     listContact: [],
-    selectedID: null
+    selectedID: null,
+    notItemsMsg: true,
+    notFoundMsg: false,
 }
 
 export default function reducer(state = defaultState, action) {
@@ -32,6 +34,10 @@ export default function reducer(state = defaultState, action) {
             if (items.length === 0)
                 return { ...state, listContact: items, addMode: true, editMode: false }
             return { ...state, listContact: items, selectedID: state.listContact[0].id }
+        case "NOTFOUND_MESSAGE":
+            return { ...state, notFoundMsg: action.payload }
+        case "NOTITEMS_MESSAGE":
+            return { ...state, notItemsMsg: action.payload }
         default:
             return state;
     }

@@ -24,7 +24,7 @@
   "contacts": [
     {
       "name": "Mom",
-      "phone": "(270)633-13-00",
+      "phone": "(270)633-13-01",
       "email": "larisa@mail.com",
       "groupID": "0",
       "userID": 1,
@@ -48,7 +48,7 @@
     },
     {
       "name": "Gerald",
-      "phone": "4507784500",
+      "phone": "(450)778-45-01",
       "email": "",
       "groupID": "1",
       "userID": 1,
@@ -80,7 +80,7 @@
     },
     {
       "name": "Test",
-      "phone": "555555555",
+      "phone": "(555)555-55-55",
       "email": "",
       "groupID": "0",
       "userID": 1,
@@ -96,7 +96,7 @@
     },
     {
       "name": "MrsMarple",
-      "phone": "(564)568-79-86",
+      "phone": "(564)568-79-87",
       "email": "",
       "groupID": "0",
       "userID": 2,
@@ -104,11 +104,35 @@
     },
     {
       "name": "роллер",
-      "phone": "(012)345-67-89",
-      "email": "gh@f.u",
-      "groupID": "2",
-      "userID": 2,
+      "phone": "(454)575-87-88",
+      "email": "",
+      "groupID": "0",
+      "userID": 1,
+      "id": 13
+    },
+    {
+      "name": "test1",
+      "phone": "(444)444-44-44",
+      "email": "",
+      "groupID": "0",
+      "userID": 1,
       "id": 14
+    },
+    {
+      "name": "test2",
+      "phone": "(555)555-55-55",
+      "email": "",
+      "groupID": "0",
+      "userID": 1,
+      "id": 15
+    },
+    {
+      "name": "test3",
+      "phone": "(788)774-54-45",
+      "email": "",
+      "groupID": "0",
+      "userID": 1,
+      "id": 16
     }
   ]
 }

@@ -6,6 +6,7 @@ function ContactMenu({actionBtnRef}) {
     const dispatch = useDispatch();
     const [isLogout, setIsLogout] = useState(false);
     const result = useSelector(state => state);
+    const sessionID = localStorage.getItem("session");
 
     const addHandler = () => {
         dispatch({type: "ADD_CONTACT"})
@@ -24,6 +25,14 @@ function ContactMenu({actionBtnRef}) {
             } )
     }
     const cancelHandler = () => {
+        /* При удалении последнего контакта указать отсутствие контактов у пользователя */
+        fetch(`http://localhost:8080/contacts?userID=${sessionID}`)
+            .then( result => result.json() )
+            .then( result => { 
+                return result.length === 0 && 
+                    dispatch({type: "NOTITEMS_MESSAGE", payload: true })
+                }
+            );
         dispatch({type: "EDIT_CONTACT"})
     }
     const logoutHandler = (e) => {
@@ -34,6 +43,10 @@ function ContactMenu({actionBtnRef}) {
         dispatch({ type: "UPDATE_SELECT_CONTACT", payload: null });
         /* Приложение переводится в режим редактирования контактов */
         dispatch({ type: "EDIT_CONTACT" });
+        /* Обнуляем сообщение о наличии контактов у пользователя */
+        dispatch({
+            type: "NOTITEMS_MESSAGE", payload: true,
+        });
         setIsLogout(true);
     }
 

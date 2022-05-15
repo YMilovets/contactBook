@@ -17,8 +17,13 @@ export default function Contact() {
         if (sessionID)
             fetch(`http://localhost:8080/contacts?userID=${sessionID}`)
                 .then( result => result.json() )
-                .then( result => result.length > 0 && 
-                    dispatch({type: "UPDATE_SELECT_CONTACT", payload: result[0].id })
+                .then( result => { 
+                    return result.length > 0 && 
+                        dispatch({
+                            type: "UPDATE_SELECT_CONTACT", 
+                            payload: result[0].id,
+                        })
+                    }
                 );
     }, [sessionID, dispatch]);
     return (
