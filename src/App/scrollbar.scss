@@ -1,0 +1,22 @@
+::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+}
+  
+::-webkit-scrollbar-track-piece {
+    background-color: #cecece;
+    padding: 3px;
+}
+  
+::-webkit-scrollbar-thumb {
+    height: 30px;
+    background-color: #7e8182;
+    border-radius: 9999px;
+    border: 3px solid #cecece;
+    background-clip: padding-box;
+}
+
+.contact-list {
+    scrollbar-color: #7e8182 #cecece;
+    scrollbar-width: thin;
+}

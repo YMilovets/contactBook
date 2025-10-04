@@ -1,0 +1,54 @@
+.auth-block {
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    margin: 15px;
+
+    .auth-block__label {
+        font: 11pt/14pt Cantarell;
+        color: #2E3436;
+    }
+    .auth-block-form {
+        flex-grow: 1;
+        .auth-block-data {
+            padding: 15px 15px 0;
+            border-left: 1px solid #c1bab5;
+            border-top: 1px solid #c1bab5;
+            border-right: 1px solid #c1bab5;
+            border-radius: 10px 10px 0 0;
+            background: #ffffff;
+            div {
+                padding-bottom: 15px;
+            }
+        }
+        .auth-block-send {
+            padding: 15px;
+            background: #E8E8E8;
+            border: 1px solid #c1bab5;
+            border-radius: 0 0 10px 10px;
+        }
+    }
+    .auth-block__login, .auth-block__pass {
+        height: 33px;
+        outline: 1px solid #CDC7C2;
+        border: 0;
+        border-radius: 6px;
+        width: 100%;
+        padding: 0;
+        box-sizing: border-box;
+        padding: 10px 8px;
+        margin: 10px 0 0;
+        font: 11pt/14pt Cantarell;
+        color: #2E3436;
+        &:focus {
+            outline: 2px solid #3584E4;
+        }
+    }
+
+    .header {
+        font: bolder 24px/30px "Cantarell";
+        color: #2E3436;
+        margin: 0;
+        padding-bottom: 15px;
+    }
+}
