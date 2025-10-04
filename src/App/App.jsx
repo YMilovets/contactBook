@@ -7,9 +7,8 @@ import reducer from "../Models/reducer";
 
 import Layout from "../Components/Layout";
 
-import "./reset.scss";
-import "./scrollbar.scss";
-import "../Components/AuthBlock/AuthBlock.scss";
+import styles from "./App.module.scss";
+import "./styles.scss";
 
 const Sign = lazy(() => import("../Components/Sign"));
 const Contact = lazy(() => import("../Components/Contact"));
@@ -19,7 +18,7 @@ const store = createStore(reducer);
 function App() {
   return (
     <Provider store={store}>
-      <div className="App">
+      <div className={styles.app}>
         <Router>
           <Routes>
             <Route path="/" element={<Layout />}>
