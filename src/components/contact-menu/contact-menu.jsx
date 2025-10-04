@@ -13,7 +13,7 @@ function ContactMenu({actionBtnRef}) {
     }
     const removeHandler = () => {
         const removeID = result.selectedID;
-        fetch(`http://localhost:8080/contacts/${removeID}`, {
+        fetch(`http://localhost:8081/contacts/${removeID}`, {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json"
@@ -26,7 +26,7 @@ function ContactMenu({actionBtnRef}) {
     }
     const cancelHandler = () => {
         /* При удалении последнего контакта указать отсутствие контактов у пользователя */
-        fetch(`http://localhost:8080/contacts?userID=${sessionID}`)
+        fetch(`http://localhost:8081/contacts?userID=${sessionID}`)
             .then( result => result.json() )
             .then( result => { 
                 return result.length === 0 && 

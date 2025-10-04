@@ -19,7 +19,9 @@
     "web-vitals": "^1.1.2"
   },
   "scripts": {
-    "start": "concurrently --kill-others \"json-server --port=8080 --watch ./contacts.json\" \"react-scripts start",
+    "start": "concurrently --kill-others \"npm run api\" \"PORT=3006 react-scripts start\"",
+    "dev": "react-scripts start",
+    "api": "json-server --port=8081 --watch ./contacts.json",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

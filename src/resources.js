@@ -4,7 +4,7 @@ export default function UseResource() {
     }
 }
 function fetchPosts() {
-    const src = "http://localhost:8080/contacts";
+    const src = "http://localhost:8081/contacts";
     return fetch(src).then(result => result.json()); 
 }
 function wrapPromise(promise) {

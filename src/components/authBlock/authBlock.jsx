@@ -23,7 +23,7 @@ export default function AuthBlock() {
                 throw new Error("Введите пароль");
             }
             /* Получение информации о пользователе по введенному логину и паролю */
-            fetch(`http://localhost:8080/users?login=${userName.current.value}&password=${password.current.value}`)
+            fetch(`http://localhost:8081/users?login=${userName.current.value}&password=${password.current.value}`)
                 .then(result => result.json())
                 .then(
                     result => {

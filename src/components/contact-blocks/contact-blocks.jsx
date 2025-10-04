@@ -32,7 +32,7 @@ export default function ContactBlocks({children}) {
     /* Запись всех контактов выбранного пользователя в Redux */
     useEffect(() => {
         const sessionID = localStorage.getItem('session');
-        fetch(`http://localhost:8080/contacts?userID=${sessionID}`)
+        fetch(`http://localhost:8081/contacts?userID=${sessionID}`)
             .then(result => result.json())
             .then( result => {
                 dispatch({

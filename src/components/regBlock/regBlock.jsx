@@ -23,7 +23,7 @@ export default function RegBlock() {
                 throw new Error("Введенный пароль не совпадает")
             } 
             /* Добавление нового пользователя в приложение */
-            fetch("http://localhost:8080/users", {
+            fetch("http://localhost:8081/users", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"

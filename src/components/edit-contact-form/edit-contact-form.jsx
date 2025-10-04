@@ -35,7 +35,7 @@ export default function Editor({ id, children, actionBtnRef }) {
                     throw new Error("Вы ввели некорректный адрес электронной почты");
             }
             /* Метод отправки изменений выбранного контакта */
-            fetch(`http://localhost:8080/contacts/${selectedID}`, {
+            fetch(`http://localhost:8081/contacts/${selectedID}`, {
                 method: "PATCH",
                 headers: {
                     "Content-Type": "application/json"
@@ -86,7 +86,7 @@ export default function Editor({ id, children, actionBtnRef }) {
             actionBtnRef.current.onclick = submitHandle;
         setMessage("");
         if (sessionID)
-            fetch(`http://localhost:8080/contacts/${selectedID}`)
+            fetch(`http://localhost:8081/contacts/${selectedID}`)
                 .then(result => result.json())
                 .then(contact => {
                     /* Проверяем, содержит ли выбранный контакт данные */

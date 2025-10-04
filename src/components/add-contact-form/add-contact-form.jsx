@@ -34,7 +34,7 @@ export default function Info({children, actionBtnRef}) {
                     throw new Error("Вы ввели некорректный адрес электронной почты");
             }
             /* Метод добавления нового контакта */
-            fetch(`http://localhost:8080/contacts`, {
+            fetch(`http://localhost:8081/contacts`, {
                 method: "POST",
                 headers: {
                     'Accept': 'application/json',
